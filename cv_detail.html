@@ -1,0 +1,427 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Nguyá»…n ThÃ nh Trung</title>
+    <!-- PhÃ´ng chá»¯ Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & VARIABLES */
+        :root {
+            --primary-bg: #1a1a1a;
+            --primary-text: #ffffff;
+            --secondary-bg: #ffffff;
+            --secondary-text: #333333;
+            --accent-color: #2F80ED;
+            --text-light: #777777;
+            --border-color: #e0e0e0;
+            --sidebar-width: 35%;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* -------------------------------------
+           A4 PAPER SETUP 
+           ------------------------------------- */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .paper-a4 {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--secondary-bg);
+            margin: 30px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .paper-a4 {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                min-height: 297mm;
+            }
+
+            .btn-print,
+            .instruction-text {
+                display: none;
+            }
+
+            /* TrÃ¡nh cáº¯t trang */
+            .exp-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* -------------------------------------
+           LAYOUT (2 COLUMNS)
+           ------------------------------------- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: #223243;
+            /* MÃ u xanh Ä‘en Ä‘áº·c trÆ°ng TopCV */
+            color: var(--primary-text);
+            padding: 25mm 10mm 15mm 15mm;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            width: calc(100% - var(--sidebar-width));
+            background-color: var(--secondary-bg);
+            color: var(--secondary-text);
+            padding: 25mm 15mm 15mm 15mm;
+        }
+
+        /* -------------------------------------
+           SIDEBAR STYLES
+           ------------------------------------- */
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #3e526a;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #fff;
+            overflow: hidden;
+        }
+
+        .avatar-placeholder {
+            font-size: 36px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            margin-right: 8px;
+            font-size: 14px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-list li {
+            font-size: 12px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .sidebar-list li::before {
+            content: "â€¢ ";
+            color: #ccc;
+        }
+
+        /* -------------------------------------
+           MAIN CONTENT STYLES
+           ------------------------------------- */
+        h1.cv-name {
+            font-size: 32px;
+            text-transform: uppercase;
+            color: #223243;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        h2.cv-title-job {
+            font-size: 16px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .main-section {
+            margin-bottom: 25px;
+        }
+
+        .main-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: #223243;
+            border-bottom: 2px solid #223243;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p.summary {
+            font-size: 13px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .exp-item {
+            margin-bottom: 18px;
+            font-size: 13px;
+            page-break-inside: avoid;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .job-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #223243;
+        }
+
+        .job-date {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .exp-detail {
+            list-style-type: disc;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .exp-detail li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        /* UTILITY */
+        .btn-print {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #223243;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-print:hover {
+            background: #3e526a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Instruction (áº©n khi in) -->
+    <div style="text-align:center; padding: 20px;" class="instruction-text">
+        <button class="btn-print" onclick="window.print()">ðŸ–¨ï¸ Xuáº¥t File PDF</button>
+    </div>
+
+    <!-- KHUNG A4 -->
+    <div class="paper-a4">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="avatar-container">
+                <img src="assets/images/anh_dai_dien.jpg" alt="Nguyá»…n ThÃ nh Trung"
+                    style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Giao tiáº¿p</h3>
+                <div class="contact-item"><span class="contact-icon">ðŸ“ž</span> 0375 749 245</div>
+                <div class="contact-item"><span class="contact-icon">âœ‰ï¸</span> trung.nguyen250196@gmail.com</div>
+                <div class="contact-item"><span class="contact-icon">ðŸ“</span> HÃ  Ná»™i, Viá»‡t Nam</div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Ká»¹ nÄƒng</h3>
+                <ul class="sidebar-list">
+                    <li>XÃ¢y dá»±ng thÆ°Æ¡ng hiá»‡u tuyá»ƒn dá»¥ng</li>
+                    <li>Content Marketing & Lead Gen</li>
+                    <li>Quáº£n trá»‹ váº­n hÃ nh (P&L)</li>
+                    <li>Thiáº¿t káº¿ quy trÃ¬nh há»‡ thá»‘ng</li>
+                    <li>ÄÃ³ng gÃ³i khÃ³a há»c/tuyá»ƒn sinh</li>
+                    <li>XÃ¢y dá»±ng vÄƒn hÃ³a phá»¥c vá»¥</li>
+                    <li>Khai thÃ¡c dá»¯ liá»‡u (BI)</li>
+                    <li>Láº­p káº¿ hoáº¡ch chuyÃªn sÃ¢u</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Há»c váº¥n</h3>
+                <p style="font-size: 13px; font-weight: 600; margin-bottom: 3px;">Ká»¹ sÆ° Äiá»‡n & Tá»± Ä‘á»™ng hÃ³a</p>
+                <p style="font-size: 12px; color: #ccc;">ÄH DÃ¢n Láº­p PhÆ°Æ¡ng ÄÃ´ng<br>(2013 â€“ 2017)</p>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">ThÃ nh tá»±u</h3>
+                <ul class="sidebar-list">
+                    <li><strong>2022:</strong> Lá»£i nhuáº­n vÆ°á»£t trá»™i.</li>
+                    <li><strong>2021:</strong> LÅ©y káº¿ tÄƒng trÆ°á»Ÿng Ä‘á»‰nh cao nháº¥t toÃ n quá»‘c.</li>
+                    <li><strong>2019:</strong> Master Trainer.</li>
+                    <li><strong>2018:</strong> Quáº£n lÃ½ xuáº¥t sáº¯c toÃ n quá»‘c.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <h1 class="cv-name">Nguyá»…n ThÃ nh Trung</h1>
+            <h2 class="cv-title-job">GiÃ¡m Ä‘á»‘c ÄÃ o táº¡o & Tuyá»ƒn sinh</h2>
+
+            <div class="main-section">
+                <h3 class="main-title">Má»¥c tiÃªu nghá» nghiá»‡p</h3>
+                <p class="summary">
+                    ChuyÃªn gia Quáº£n trá»‹ NhÃ¢n sá»± & Kinh doanh vá»›i hÆ¡n 7 nÄƒm kinh nghiá»‡m thá»±c chiáº¿n trong lÄ©nh vá»±c Dá»‹ch
+                    vá»¥/LÃ m Ä‘áº¹p. Sá»Ÿ há»¯u nÄƒng lá»±c lÃµi trong viá»‡c <strong>xÃ¢y dá»±ng há»‡ thá»‘ng nhÆ°á»£ng quyá»n, thiáº¿t káº¿ quy
+                        trÃ¬nh Ä‘Ã o táº¡o vÃ  tá»‘i Æ°u hÃ³a chi phÃ­ váº­n hÃ nh</strong>. ÄÃ£ tá»«ng quáº£n lÃ½ máº¡ng lÆ°á»›i há»c viÃªn trÃªn
+                    11 tá»‰nh thÃ nh, táº¡o ra dÃ²ng doanh thu tuyá»ƒn sinh lÃªn tá»›i <strong>1.4 tá»· VNÄ/thÃ¡ng</strong>. Cam káº¿t
+                    kiáº¿n táº¡o VÄƒn hÃ³a Phá»¥c vá»¥ xuáº¥t sáº¯c Ä‘á»ƒ bá»©t phÃ¡ lá»£i nhuáº­n bá»n vá»¯ng cho tá»• chá»©c.
+                </p>
+            </div>
+
+            <div class="main-section">
+                <h3 class="main-title">Kinh nghiá»‡m lÃ m viá»‡c</h3>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="job-title">GiÃ¡m Ä‘á»‘c Tuyá»ƒn dá»¥ng</span>
+                        <span class="job-date">08/2025 â€“ Nay</span>
+                    </div>
+                    <span class="company-name">Há»‡ thá»‘ng Äá»‘i tÃ¡c Tháº©m má»¹</span>
+                    <ul class="exp-detail">
+                        <li><strong>Kiáº¿n táº¡o há»‡ thá»‘ng tuyá»ƒn dá»¥ng</strong> - Thiáº¿t káº¿ vÃ  chuáº©n hÃ³a bá»™ quy trÃ¬nh tuyá»ƒn
+                            dá»¥ng
+                            ná»™i bá»™ tá»« sá»‘ 0, giÃºp Ä‘Ã¡p á»©ng 100% má»¥c tiÃªu Ä‘á»‹nh biÃªn nhÃ¢n sá»± hÃ ng quÃ½.</li>
+                        <li><strong>XÃ¢y dá»±ng máº¡ng lÆ°á»›i data</strong> - PhÃ¡t triá»ƒn Talent Pool chuyÃªn sÃ¢u cho ngÃ nh
+                            Beauty
+                            Salon, thiáº¿t láº­p má»‘i quan há»‡ há»£p tÃ¡c cung á»©ng nhÃ¢n sá»± vá»›i cÃ¡c Ä‘á»‘i tÃ¡c Spa lá»›n.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="job-title">Äáº¡i diá»‡n NhÆ°á»£ng quyá»n & Quáº£n trá»‹ TH Moyo</span>
+                        <span class="job-date">06/2024 â€“ 03/2025</span>
+                    </div>
+                    <span class="company-name">Há»‡ thá»‘ng Moyo</span>
+                    <ul class="exp-detail">
+                        <li><strong>PhÃ¡t triá»ƒn tá»‡p Ä‘á»‘i tÃ¡c</strong> - Khai thÃ¡c vÃ  xÃ¢y dá»±ng cÆ¡ sá»Ÿ dá»¯ liá»‡u máº¡nh máº½ vá»›i
+                            hÆ¡n
+                            <strong>500+ khÃ¡ch hÃ ng nhÆ°á»£ng quyá»n</strong>.
+                        </li>
+                        <li><strong>XÃ¢y dá»±ng thÆ°Æ¡ng hiá»‡u (build-up)</strong> - Äá»‹nh hÃ¬nh thÆ°Æ¡ng hiá»‡u Moyo tá»« giai Ä‘oáº¡n
+                            sÆ¡
+                            khai, má»Ÿ thÃ nh cÃ´ng <strong>24 chi nhÃ¡nh</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="job-title">TrÆ°á»Ÿng phÃ²ng ÄÃ o táº¡o & Tuyá»ƒn sinh</span>
+                        <span class="job-date">03/2021 â€“ 03/2024</span>
+                    </div>
+                    <span class="company-name">Há»‡ thá»‘ng 30SHINE</span>
+                    <ul class="exp-detail">
+                        <li><strong>Bá»©t phÃ¡ doanh thu tuyá»ƒn sinh</strong> - ÄÃ³ng gÃ³i quy trÃ¬nh Ä‘Ã o táº¡o, táº¡o dÃ²ng doanh
+                            thu <strong>~1.4 tá»· VNÄ/thÃ¡ng</strong>.</li>
+                        <li><strong>Má»Ÿ rá»™ng máº¡ng lÆ°á»›i</strong> - Tá»• chá»©c cÃ¡c lá»›p dáº¡y nghá» táº¡i <strong>11 tá»‰nh
+                                thÃ nh</strong>; liÃªn káº¿t <strong>6 trÆ°á»ng cao Ä‘áº³ng/trung cáº¥p</strong>.</li>
+                        <li><strong>Chuyá»ƒn giao cÃ´ng nghá»‡</strong> - Sá»‘ hoÃ¡ tÃ i liá»‡u vÃ  trá»±c tiáº¿p chuyá»ƒn giao quy trÃ¬nh
+                            Ä‘Ã o táº¡o cho Ä‘á»‘i tÃ¡c.</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="job-title">ChuyÃªn viÃªn ÄÃ o táº¡o</span>
+                        <span class="job-date">03/2019 â€“ 03/2021</span>
+                    </div>
+                    <span class="company-name">Há»‡ thá»‘ng 30SHINE</span>
+                    <ul class="exp-detail">
+                        <li>Äá»©ng lá»›p trá»±c tiáº¿p Ä‘Ã o táº¡o VÄƒn hÃ³a Phá»¥c vá»¥ & NÃ¢ng táº§m dá»‹ch vá»¥ (Up Your Service), Ä‘Ã³ng gÃ³i
+                            "Train the Trainer".</li>
+                    </ul>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="job-title">Quáº£n lÃ½ Salon & ChuyÃªn viÃªn CSKH</span>
+                        <span class="job-date">03/2017 â€“ 03/2019</span>
+                    </div>
+                    <span class="company-name">Há»‡ thá»‘ng 30SHINE</span>
+                    <ul class="exp-detail">
+                        <li>Quáº£n trá»‹ P&L, xáº¿p ca, nhÃ¢n sá»± vÃ  giáº£i quyáº¿t 100% khiáº¿u náº¡i khÃ¡ch hÃ ng Ä‘Ãºng chuáº©n SLA táº¡i
+                            Salon (07/2017 - 03/2019).</li>
+                        <li>TÆ° váº¥n dá»‹ch vá»¥ khÃ¡ch hÃ ng Ä‘a kÃªnh vÃ  kiá»ƒm soÃ¡t hoáº¡t Ä‘á»™ng xuáº¥t/nháº­p váº­t tÆ° (03/2017 -
+                            07/2017).</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
